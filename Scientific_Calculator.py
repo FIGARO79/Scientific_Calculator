@@ -3,9 +3,6 @@
 import math
 import statistics
 
-#variable para almacenar los números de operacione estadisticas
-numeros = []
-
 def menu(): # Función menú
     print("\nMenú de la calculadora científica")
     print("| Opción | Descripción               |")
@@ -28,13 +25,16 @@ def menu(): # Función menú
     print("| 16     | Mediana                   |")
     print("| 17     | Moda                      |")
     print("| 18     | Salir                     |")
-    try:
-        opcion = int(input("\nSeleccione una opción: "))
-    except ValueError:
-        print("Por favor, ingrese un número válido.")
-        return menu()
-    return opcion
-
+    
+    while True:
+        try:
+            opcion = int(input("\nSeleccione una opción: "))
+            if 1 <= opcion <= 18:
+                return opcion
+            else:
+                print("Opción inválida. Por favor, ingrese un número entre 1 y 18.")
+        except ValueError:
+            print("Entrada inválida. Por favor, ingrese un número.")
 
 def suma(a,b):# Función suma
     return a+b  
@@ -162,43 +162,45 @@ while True: # Ciclo infinito de la calculadora
         continue    
     elif opcion == 15: # Media aritmética
         print("\nIngrese los números para calcular la media aritmética")
-        #numeros = []
+        aritmetica = []
         while True:
             numero = input("Ingrese un número (o 'X' para terminar): ")
             if numero.lower() == 'x':
                 break
-            numeros.append(float(numero))
-        if numeros:
-            print(f"\nLa media aritmética de los números es: {media_aritmetica(numeros)}")
+            aritmetica.append(float(numero))
+        if aritmetica:
+            print(f"\nLa media aritmética de los números es: {media_aritmetica(aritmetica)}")
         else:
             print("No se ingresaron números.")
-        numeros.clear()  # Vaciar la lista después de la ejecución
+        aritmetica.clear()  # Vaciar la lista después de la ejecución
         continue
     elif opcion == 16: # Mediana
         print("\nIngrese los números para calcular la mediana")
+        Media = []
         while True:
             numero = input("Ingrese un número (o 'X' para terminar): ")
             if numero.lower() == 'x':
                 break
-            numeros.append(float(numero))
-        if numeros:
-            print(f"\nLa mediana de los números es: {mediana(numeros)}")
+            Media.append(float(numero))
+        if Media:
+            print(f"\nLa mediana de los números es: {mediana(Media)}")
         else:
             print("No se ingresaron números.")
-        numeros.clear()  # Vaciar la lista después de la ejecución
+        Media.clear()  # Vaciar la lista después de la ejecución
         continue
     elif opcion == 17: # Moda
         print("\nIngrese los números para calcular la moda")
+        Moda = []
         while True:
             numero = input("Ingrese un número (o 'X' para terminar): ")
             if numero.lower() == 'x':
                 break
-            numeros.append(float(numero))
-        if numeros:
-            print(f"\nLa moda de los números es: {moda(numeros)}")
+            Moda.append(float(numero))
+        if Moda:
+            print(f"\nLa moda de los números es: {moda(Moda)}")
         else:
             print("No se ingresaron números.")
-        numeros.clear()  # Vaciar la lista después de la ejecución
+        Moda.clear()  # Vaciar la lista después de la ejecución
         continue
     else:
         print("\nHasta luego") # Mensaje de despedida
